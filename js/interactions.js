@@ -3,16 +3,31 @@
 // "Morte na Barbearia"
 // ============================================================
 
+// js/interactions.js
 export function init() {
   const form = document.getElementById('form-main');
   if (!form) return;
 
-  form.addEventListener('submit', function(e) {
+  // Elemento do toast
+  const toast = document.getElementById('toast');
+  const closeBtn = toast?.querySelector('.toast-close');
+
+  // Fechar toast manualmente
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => {
+      toast.classList.remove('show');
+    });
+  }
+
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault(); // Impede o redirecionamento padrão
+
     const name = document.getElementById('form-name');
     const email = document.getElementById('form-email');
-    let isValid = true;
+    const message = document.getElementById('form-message');
 
-    // Valida nome
+    // Validação
+    let isValid = true;
     if (!name.value.trim()) {
       setError(name, 'Nome é obrigatório');
       isValid = false;
@@ -20,7 +35,6 @@ export function init() {
       clearError(name);
     }
 
-    // Valida e-mail
     if (!email.value.trim() || !isValidEmail(email.value)) {
       setError(email, 'E-mail inválido');
       isValid = false;
@@ -28,31 +42,61 @@ export function init() {
       clearError(email);
     }
 
-    if (!isValid) {
-      e.preventDefault();
-      return;
-    }
+    if (!isValid) return;
 
-    // Feedback de loading
+    // Prepara os dados
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+
+    // Botão de loading
     const submitBtn = form.querySelector('button[type="submit"]');
     const originalText = submitBtn.innerHTML;
     submitBtn.disabled = true;
     submitBtn.innerHTML = '<span class="spinner"></span> Enviando...';
 
-    // Restaura após 5s (caso a página não recarregue)
-    setTimeout(() => {
+    try {
+      const response = await fetch('https://api.staticforms.dev/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+
+      if (response.ok) {
+        // Sucesso: exibe toast
+        showToast();
+
+        // Limpa o formulário
+        form.reset();
+
+        // Após 5 segundos, redireciona para a página inicial
+        setTimeout(() => {
+          window.location.href = '/'; // ou window.location.hash = '#';
+        }, 5000);
+
+      } else {
+        alert('Ocorreu um erro ao enviar. Tente novamente.');
+      }
+    } catch (error) {
+      console.error('Erro no envio:', error);
+      alert('Erro de conexão. Verifique sua internet e tente novamente.');
+    } finally {
       submitBtn.disabled = false;
       submitBtn.innerHTML = originalText;
-    }, 5000);
+    }
   });
 
-  // Limpa erros ao digitar
-  form.querySelectorAll('input, textarea').forEach(field => {
-    field.addEventListener('input', function() {
-      clearError(this);
-    });
-  });
+  // Função para exibir o toast
+  function showToast() {
+    if (toast) {
+      toast.classList.add('show');
+      // Fecha automaticamente após 6 segundos (caso o usuário não feche)
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 6000);
+    }
+  }
 
+  // Funções auxiliares (validação)
   function setError(input, msg) {
     const group = input.closest('.form-group');
     if (!group) return;
@@ -77,4 +121,11 @@ export function init() {
   function isValidEmail(email) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   }
+
+  // Limpa erros ao digitar
+  form.querySelectorAll('input, textarea').forEach(field => {
+    field.addEventListener('input', function () {
+      clearError(this);
+    });
+  });
 }
