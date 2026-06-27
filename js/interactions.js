@@ -3,7 +3,6 @@
 // "Morte na Barbearia"
 // ============================================================
 
-// js/interactions.js
 export function init() {
   const form = document.getElementById('form-main');
   if (!form) return;
@@ -12,7 +11,6 @@ export function init() {
   const toast = document.getElementById('toast');
   const closeBtn = toast?.querySelector('.toast-close');
 
-  // Fechar toast manualmente
   if (closeBtn) {
     closeBtn.addEventListener('click', () => {
       toast.classList.remove('show');
@@ -20,7 +18,7 @@ export function init() {
   }
 
   form.addEventListener('submit', async function (e) {
-    e.preventDefault(); // Impede o redirecionamento padrão
+    e.preventDefault();
 
     const name = document.getElementById('form-name');
     const email = document.getElementById('form-email');
@@ -44,9 +42,13 @@ export function init() {
 
     if (!isValid) return;
 
-    // Prepara os dados
-    const formData = new FormData(form);
-    const data = Object.fromEntries(formData.entries());
+    // Dados a serem enviados (sem redirectTo)
+    const data = {
+      name: name.value.trim(),
+      email: email.value.trim(),
+      message: message.value.trim() || '',
+      apiKey: 'sf_b28b453bf885be88f89f8e34' // Substitua pela sua chave, se necessário
+    };
 
     // Botão de loading
     const submitBtn = form.querySelector('button[type="submit"]');
@@ -57,27 +59,38 @@ export function init() {
     try {
       const response = await fetch('https://api.staticforms.dev/submit', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json' // Importante: pede JSON em vez de redirecionamento
+        },
         body: JSON.stringify(data)
       });
 
       if (response.ok) {
-        // Sucesso: exibe toast
-        showToast();
+        const result = await response.json();
 
-        // Limpa o formulário
-        form.reset();
+        if (result.success) {
+          // Sucesso: exibe toast
+          showToast();
 
-        // Após 5 segundos, redireciona para a página inicial
-        setTimeout(() => {
-          window.location.reload(); // ou window.location.hash = '#';
-        }, 5000);
+          // Limpa o formulário
+          form.reset();
 
+          // Após 5 segundos, redireciona para a página inicial
+          setTimeout(() => {
+            window.location.href = '/';
+          }, 5000);
+        } else {
+          alert('Erro no envio: ' + (result.message || 'Tente novamente.'));
+        }
       } else {
-        alert('Ocorreu um erro ao enviar. Tente novamente.');
+        // Se o servidor retornar erro HTTP
+        const errorText = await response.text();
+        console.error('Erro HTTP:', response.status, errorText);
+        alert('Erro no servidor. Tente novamente mais tarde.');
       }
     } catch (error) {
-      console.error('Erro no envio:', error);
+      console.error('Erro de rede:', error);
       alert('Erro de conexão. Verifique sua internet e tente novamente.');
     } finally {
       submitBtn.disabled = false;
@@ -89,14 +102,13 @@ export function init() {
   function showToast() {
     if (toast) {
       toast.classList.add('show');
-      // Fecha automaticamente após 6 segundos (caso o usuário não feche)
       setTimeout(() => {
         toast.classList.remove('show');
       }, 6000);
     }
   }
 
-  // Funções auxiliares (validação)
+  // Funções de validação
   function setError(input, msg) {
     const group = input.closest('.form-group');
     if (!group) return;
