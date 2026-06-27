@@ -78,7 +78,7 @@ export function init() {
 
           // Após 5 segundos, redireciona para a página inicial
           setTimeout(() => {
-            window.location.href = '/';
+            window.location.href = './';
           }, 5000);
         } else {
           alert('Erro no envio: ' + (result.message || 'Tente novamente.'));
