@@ -1,0 +1,41 @@
+/* ============================================================
+   ESTILO PRINCIPAL — IMPORTA TODOS OS MÓDULOS
+   "Morte na Barbearia"
+   ============================================================ */
+
+@import url('reset.css');
+@import url('variables.css');
+@import url('layout.css');
+@import url('components.css');
+@import url('animations.css');
+@import url('responsive.css');
+@import url('utilities.css');
+
+/* ----- ESTILOS GLOBAIS ADICIONAIS ----- */
+body {
+  background: var(--color-dark);
+  color: var(--color-text-body);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  transition: color var(--transition-fast);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+::selection {
+  background: var(--color-gold);
+  color: var(--color-dark);
+}
+
+.about-desc p,
+.author-bio p {
+  color: #f0f0f8;
+}

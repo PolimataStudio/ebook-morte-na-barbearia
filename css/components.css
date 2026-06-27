@@ -1,0 +1,378 @@
+/* ============================================================
+   COMPONENTES — ELEMENTOS CINEMATOGRÁFICOS
+   "Morte na Barbearia"
+   ============================================================ */
+
+/* ----- BOTÕES (COM RIPPLE E MAGNETIC) ----- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  font-family: var(--font-heading);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--text-base);
+  padding: 0.75rem 2rem;
+  border-radius: var(--radius-md);
+  border: 2px solid transparent;
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  background: transparent;
+  color: var(--color-white);
+}
+
+.btn-primary {
+  background: var(--color-gold);
+  color: var(--color-dark);
+  border-color: var(--color-gold);
+  box-shadow: 0 4px 24px var(--color-gold-glow);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background: var(--color-gold-light);
+  border-color: var(--color-gold-light);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 40px var(--color-gold-glow);
+}
+
+.btn-outline {
+  border-color: rgba(255, 255, 255, 0.25);
+  color: var(--color-white);
+  background: transparent;
+}
+
+.btn-outline:hover,
+.btn-outline:focus {
+  border-color: var(--color-gold);
+  color: var(--color-gold);
+  transform: translateY(-3px);
+  box-shadow: 0 0 30px var(--color-gold-glow);
+}
+
+.btn-lg {
+  padding: 1rem 2.5rem;
+  font-size: var(--text-md);
+}
+
+.btn-block {
+  width: 100%;
+  justify-content: center;
+}
+
+/* ----- CARDS (COM EFEITO DE PROFUNDIDADE) ----- */
+.card {
+  background: var(--gradient-card);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  transition: all var(--transition-base);
+  box-shadow: var(--shadow-soft);
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(212, 175, 55, 0.2);
+  box-shadow: var(--shadow-medium), 0 0 40px rgba(212, 175, 55, 0.05);
+}
+
+/* ----- ESTATÍSTICAS (CONTADORES) ----- */
+.stat-card {
+  text-align: center;
+  padding: var(--space-5);
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: var(--radius-md);
+  border: var(--border-light);
+}
+
+.stat-number {
+  font-family: var(--font-heading);
+  font-weight: var(--font-weight-black);
+  font-size: var(--text-5xl);
+  color: var(--color-gold);
+  display: block;
+  line-height: 1.2;
+}
+
+.stat-label {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--color-gray-mid);
+  display: block;
+  margin-top: var(--space-1);
+}
+
+/* ----- CAPÍTULOS (CARDS DE CENA) ----- */
+.chapter-card {
+  background: rgba(255, 255, 255, 0.02);
+  border-left: 4px solid var(--color-gold);
+  padding: var(--space-5) var(--space-5) var(--space-5) var(--space-6);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  transition: all var(--transition-base);
+}
+
+.chapter-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateX(6px);
+  box-shadow: var(--shadow-soft);
+}
+
+.chapter-number {
+  font-family: var(--font-heading);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  color: var(--color-gold);
+  letter-spacing: 0.1em;
+}
+
+.chapter-title {
+  font-family: var(--font-heading);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--text-xl);
+  color: var(--color-white);
+  margin: var(--space-1) 0;
+}
+
+.chapter-excerpt {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: var(--color-gray-mid);
+  line-height: 1.5;
+}
+
+/* ----- DEPOIMENTOS (TESTEMUNHAS) ----- */
+.testimonial-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  transition: all var(--transition-base);
+}
+
+.testimonial-card:hover {
+  border-color: rgba(212, 175, 55, 0.2);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-soft);
+}
+
+.testimonial-rating {
+  color: var(--color-gold);
+  font-size: var(--text-lg);
+  letter-spacing: 2px;
+}
+
+.testimonial-card blockquote {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: var(--color-gray-light);
+  font-style: italic;
+  margin: var(--space-3) 0;
+  line-height: 1.6;
+}
+
+.testimonial-author {
+  display: flex;
+  flex-direction: column;
+}
+
+.testimonial-author strong {
+  font-family: var(--font-heading);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-white);
+}
+
+.testimonial-author span {
+  font-size: var(--text-sm);
+  color: var(--color-gray-mid);
+}
+
+/* ----- AUTOR (BIO) ----- */
+.author-image-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  max-width: 400px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-hard);
+}
+
+.author-image-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.author-image-frame:hover img {
+  transform: scale(1.03);
+}
+
+.author-image-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 40%, rgba(212, 175, 55, 0.15), transparent 70%);
+  pointer-events: none;
+}
+
+.author-bio {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: var(--color-text-body);
+  line-height: 1.8;
+}
+
+.author-bio p + p {
+  margin-top: var(--space-3);
+}
+
+.author-social {
+  display: flex;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+}
+
+.author-social a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-full);
+  border: var(--border-light);
+  color: var(--color-gray-light);
+  transition: all var(--transition-fast);
+}
+
+.author-social a:hover,
+.author-social a:focus {
+  border-color: var(--color-gold);
+  color: var(--color-gold);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-glow);
+}
+
+/* ----- FORMULÁRIO (CTA) ----- */
+.cta-form-card {
+  max-width: 600px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: var(--border-light);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8);
+  text-align: center;
+  box-shadow: var(--shadow-hard);
+  position: relative;
+  z-index: var(--z-default);
+}
+
+.cta-form-card .section-title {
+  font-size: var(--text-3xl);
+}
+
+.form-main {
+  margin-top: var(--space-6);
+  text-align: left;
+}
+
+.form-group {
+  margin-bottom: var(--space-4);
+}
+
+.form-group label {
+  display: block;
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-gray-light);
+  margin-bottom: var(--space-1);
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: var(--border-light);
+  border-radius: var(--radius-md);
+  color: var(--color-white);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  transition: border var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--color-gold);
+  box-shadow: 0 0 0 3px var(--color-gold-glow);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.form-group .error-message {
+  font-size: var(--text-sm);
+  color: #f87171;
+  margin-top: var(--space-1);
+  display: none;
+}
+
+.form-group.is-error input,
+.form-group.is-error textarea {
+  border-color: #f87171;
+}
+
+.form-group.is-error .error-message {
+  display: block;
+}
+
+.form-note {
+  margin-top: var(--space-4);
+  font-size: var(--text-sm);
+  color: var(--color-gray-mid);
+}
+
+/* ----- RIPPLE (EFEITO) ----- */
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(0);
+  animation: ripple-anim 0.6s ease-out;
+  pointer-events: none;
+}
+
+@keyframes ripple-anim {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* ----- SPINNER (LOADING) ----- */
+.spinner {
+  display: inline-block;
+  width: 1.2em;
+  height: 1.2em;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-top-color: var(--color-gold);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

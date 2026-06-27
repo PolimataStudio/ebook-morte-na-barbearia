@@ -1,0 +1,110 @@
+/* ============================================================
+   VARIÁVEIS — DESIGN SYSTEM CINEMATOGRÁFICO
+   "Morte na Barbearia"
+   ============================================================ */
+
+:root {
+  /* ----- CORES NARRATIVAS ----- */
+  /* Escuridão, isolamento, passado */
+  --color-dark: #0a0a14;
+  --color-dark-soft: #141424;
+  --color-navy: #121b33;
+  --color-blue-deep: #1a2a6c;
+  --color-blue-mid: #2a4a9a;
+
+  /* Esperança, redenção, calor humano */
+  --color-gold: #d4af37;
+  --color-gold-light: #f0d060;
+  --color-gold-glow: rgba(212, 175, 55, 0.25);
+  --color-gold-subtle: rgba(212, 175, 55, 0.08);
+
+  /* Luz, verdade, clareza */
+  --color-white: #ffffff;
+  --color-gray-light: #d0d0e0;
+  --color-gray-mid: #8888a0;
+  --color-gray-dark: #3a3a4e;
+
+  /* Overlays e profundidade */
+  --color-overlay: rgba(10, 10, 20, 0.85);
+  --color-shadow: rgba(0, 0, 0, 0.7);
+
+  /* ----- GRADIENTES CINEMATOGRÁFICOS ----- */
+  --gradient-hero: linear-gradient(135deg, #0a0a14 0%, #1a2a6c 80%);
+  --gradient-overlay: linear-gradient(to bottom, rgba(10,10,20,0.92) 0%, rgba(26,42,108,0.6) 100%);
+  --gradient-gold: linear-gradient(135deg, #d4af37, #f0d060);
+  --gradient-card: linear-gradient(145deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
+  --gradient-section: linear-gradient(180deg, var(--color-dark) 0%, var(--color-navy) 100%);
+
+  /* ----- TIPOGRAFIA ----- */
+  --font-heading: 'Exo 2', sans-serif;
+  --font-body: 'Lato', sans-serif;
+
+  /* Escala tipográfica (modular) */
+  --text-xs: 0.75rem;    /* 12px */
+  --text-sm: 0.875rem;   /* 14px */
+  --text-base: 1rem;     /* 16px */
+  --text-md: 1.125rem;   /* 18px */
+  --text-lg: 1.25rem;    /* 20px */
+  --text-xl: 1.5rem;     /* 24px */
+  --text-2xl: 1.75rem;   /* 28px */
+  --text-3xl: 2rem;      /* 32px */
+  --text-4xl: 2.5rem;    /* 40px */
+  --text-5xl: 3rem;      /* 48px */
+  --text-6xl: 3.75rem;   /* 60px */
+  --text-7xl: 4.5rem;    /* 72px */
+  --text-8xl: 5.5rem;    /* 88px */
+
+  /* Peso das fontes */
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+  --font-weight-black: 900;
+
+  /* ----- ESPAÇAMENTO (escala) ----- */
+  --space-1: 0.25rem;    /* 4px */
+  --space-2: 0.5rem;     /* 8px */
+  --space-3: 0.75rem;    /* 12px */
+  --space-4: 1rem;       /* 16px */
+  --space-5: 1.5rem;     /* 24px */
+  --space-6: 2rem;       /* 32px */
+  --space-7: 2.5rem;     /* 40px */
+  --space-8: 3rem;       /* 48px */
+  --space-9: 4rem;       /* 64px */
+  --space-10: 5rem;      /* 80px */
+  --space-11: 6rem;      /* 96px */
+  --space-12: 8rem;      /* 128px */
+
+  /* ----- SOMBRAS CINEMATOGRÁFICAS ----- */
+  --shadow-soft: 0 8px 32px rgba(0, 0, 0, 0.5);
+  --shadow-medium: 0 12px 48px rgba(0, 0, 0, 0.6);
+  --shadow-hard: 0 24px 64px rgba(0, 0, 0, 0.8);
+  --shadow-glow: 0 0 40px var(--color-gold-glow);
+  --shadow-glow-strong: 0 0 80px var(--color-gold-glow);
+
+  /* ----- BORDAS ----- */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* ----- TRANSIÇÕES ----- */
+  --transition-fast: 150ms cubic-bezier(0.2, 0, 0, 1);
+  --transition-base: 300ms cubic-bezier(0.2, 0.9, 0.3, 1);
+  --transition-slow: 600ms cubic-bezier(0.2, 0.9, 0.3, 1);
+  --transition-smooth: 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* ----- Z-INDEX ----- */
+  --z-back: -1;
+  --z-default: 1;
+  --z-sticky: 100;
+  --z-overlay: 200;
+  --z-modal: 300;
+  --z-toast: 400;
+
+  /* ----- OUTROS ----- */
+  --max-width: 1200px;
+  --header-height: 72px;
+  --border-light: 1px solid rgba(255, 255, 255, 0.06);
+}

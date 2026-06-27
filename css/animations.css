@@ -1,0 +1,87 @@
+/* ============================================================
+   ANIMAÇÕES — MOVIMENTO CINEMATOGRÁFICO
+   "Morte na Barbearia"
+   ============================================================ */
+
+/* ----- SCROLL REVEAL (ENTRADA DE CENA) ----- */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 {
+  transition-delay: 0.1s;
+}
+.reveal-delay-2 {
+  transition-delay: 0.2s;
+}
+.reveal-delay-3 {
+  transition-delay: 0.3s;
+}
+.reveal-delay-4 {
+  transition-delay: 0.4s;
+}
+
+/* ----- FLOATING (LEVITAÇÃO) ----- */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+.float {
+  animation: float 5s ease-in-out infinite;
+}
+
+/* ----- GLOW PULSING (LUMINOSIDADE) ----- */
+@keyframes pulse-glow {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+.glow-pulse {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+/* ----- PARALLAX SUTIL (MOVIMENTO DE CAMADAS) ----- */
+.parallax-layer {
+  will-change: transform;
+  transition: transform 0.1s linear;
+}
+
+/* ----- SCROLL PROGRESS (JÁ NO LAYOUT) ----- */
+
+/* ----- LOADING SKELETON (OPCIONAL) ----- */
+.skeleton {
+  background: linear-gradient(90deg, rgba(255,255,255,0.02) 25%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0.02) 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+  border-radius: var(--radius-sm);
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
