@@ -70,7 +70,7 @@ export function init() {
 
         // Após 5 segundos, redireciona para a página inicial
         setTimeout(() => {
-          window.location.href = '/'; // ou window.location.hash = '#';
+          window.location.href = '/#'; // ou window.location.hash = '#';
         }, 5000);
 
       } else {
