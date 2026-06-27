@@ -6,6 +6,7 @@
 const CACHE_NAME = 'morte-barbearia-v2';
 const ASSETS = [
   '/',
+  '/404.html',
   '/index.html',
   '/css/style.css',
   '/js/script.js',
